@@ -1,0 +1,41 @@
+{
+  "name": "programming-club-signup",
+  "version": "1.0.0",
+  "description": "Signup website for MICDS Programming Club",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "concurrently \"gulp\" \"nodemon\" ",
+    "sass": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelgira23/Programming-Club-Signup.git"
+  },
+  "keywords": [
+    "MICDS",
+    "Programming",
+    "Club"
+  ],
+  "author": "Michael Gira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelgira23/Programming-Club-Signup/issues"
+  },
+  "homepage": "https://github.com/michaelgira23/Programming-Club-Signup#readme",
+  "dependencies": {
+    "async": "^2.0.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.9",
+    "nodemailer": "^2.5.0",
+    "request": "^2.74.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "concurrently": "^2.2.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  }
+}
