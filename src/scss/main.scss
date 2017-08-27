@@ -1,0 +1,42 @@
+$school-red: #d12229;
+$school-dark-red: #581021;
+$school-green: #04463d;
+$school-grey: #bcbbb6;
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+
+$theme-colors: (
+  primary: $school-red,
+  secondary: $school-dark-red,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800
+);
+
+$enable-shadows: true;
+
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+// Small devices (landscape phones, 544px and up)
+@include media-breakpoint-up(sm) {
+	
+}
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) {
+	
+}
+
+// Large devices (desktops, 992px and up)
+@include media-breakpoint-up(lg) {
+	
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@include media-breakpoint-up(xl) {
+	
+}

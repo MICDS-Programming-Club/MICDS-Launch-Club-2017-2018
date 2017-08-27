@@ -67,28 +67,21 @@ function signup(db, data, callback) {
 		return;
 	}
 
-	const newProgrammer = {
-		programmer: data.email,
+	const newMember = {
+		student: data.email,
 		firstName: data.firstName,
 		lastName: data.lastName,
 		gradYear: data.gradYear,
 		level: data.level
 	};
 
-	const emailData = {
-		firstName: data.firstName,
-		lastName: data.lastName,
-		treehouseEmail: config.treehouse.email,
-		treehousePassword: config.treehouse.password
-	};
-
 	// Register user
 	async.parallel([
 		// Insert user in database
 		function(callback) {
-			var programmerData = db.collection('programmers');
+			var programmerData = db.collection('members');
 
-			programmerData.update({ programmer: data.email }, newProgrammer, { upsert: true }, function(err, results) {
+			programmerData.update({ student: data.email }, newMember, { upsert: true }, function(err, results) {
 				if(err) {
 					callback(new Error('There was a problem inserting the student into the database!'));
 					return;
@@ -100,7 +93,7 @@ function signup(db, data, callback) {
 		},
 		// Send email
 		function(callback) {
-			mail.sendHTML(data.email + '@micds.org', 'Programming Club', __dirname + '/../html/messages/programming-club.html', emailData, function(err) {
+			mail.sendHTML(data.email + '@micds.org', 'MICDS MIT Launch - Welcome ' + newMember.firstName + '!', __dirname + '/../html/messages/welcome.html', newMember, function(err) {
 				if(err) {
 					callback(err);
 					return;
@@ -146,12 +139,12 @@ function signup(db, data, callback) {
 
 		// Send a message to Slack chat to celebrate!
 		request({
-			url: 'https://' + config.slack.group + '.slack.com/api/chat.postMessage',
+			url: config.slack.webhookURL,
 			method: 'POST',
 			form: {
 				token: config.slack.token,
 				channel: config.slack.announceChannel,
-				text: '*' + data.firstName + ' ' + data.lastName + ' (' + data.gradYear + ')* just registered for the Programming Club! An invitation has been sent to *' + data.email + '@micds.org*. This person has described their skill level at *' + data.level + '*.'
+				text: '*' + data.firstName + ' ' + data.lastName + ' (' + data.gradYear + ')* just joined MIT Launch Club! An invitation has been sent to *' + data.email + '@micds.org*.'
 			}
 		});
 

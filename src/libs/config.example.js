@@ -11,17 +11,13 @@ module.exports =
 
 	email: {
 		URI      : '',
-		fromEmail: 'hello@micdsprogramming.club',
-		fromName : 'MICDS Programming Club',
+		fromEmail: 'support@micdsmitlaunch.club',
+		fromName : 'MICDS MIT Launch Club',
 	},
 	slack: {
 		group: '',
 		token: '',
 		announceChannel: ''
 	},
-	mongodbURI: '',
-	treehouse: {
-		'email': '',
-		'password': ''
-	}
+	mongodbURI: ''
 }
