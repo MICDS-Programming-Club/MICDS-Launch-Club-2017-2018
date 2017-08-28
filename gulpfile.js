@@ -8,15 +8,14 @@ gulp.task('clean', function() {
 });
 
 // Compile Sass
-gulp.task('sass', function() {
+gulp.task('sass', function () {
 	return gulp.src('src/scss/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('src/public/css'));
 });
-
-gulp.task('default', ['sass']);
-
-var watcher = gulp.watch(['src/scss/**/*.scss'], ['sass']);
-watcher.on('change', function(event) {
-	console.log('File ' + event.path + ' was ' + event.type);
+   
+gulp.task('sass:watch', function () {
+	gulp.watch('./sass/**/*.scss', ['sass']);
 });
+
+gulp.task('default', ['sass:watch']);
