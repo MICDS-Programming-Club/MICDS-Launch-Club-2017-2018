@@ -3,7 +3,7 @@ node_js:
 - node
 script: npm run build
 after_success:
-- sh .travis/deploy.sh 45.56.70.141 /home/apps/launch-club/
+- sh .travis/deploy.sh 45.56.70.141 /home/apps/launch-club/micdsmitlaunch.club
 before_install:
 - openssl aes-256-cbc -k "$ssh_key_pass" -in .travis/id_rsa.enc -out .travis/id_rsa -d
 env:
