@@ -5,5 +5,7 @@ script: npm run build
 after_success:
 - sh .travis/deploy.sh 45.56.70.141 /home/apps/launch-club/micdsmitlaunch.club
 before_install:
-- openssl aes-256-cbc -K $encrypted_c8449bc2a4e0_key -iv $encrypted_c8449bc2a4e0_iv
-  -in .travis/id_rsa.enc -out .travis/id_rsa -d
+- openssl aes-256-cbc -k "$ssh_key_pass" -in .travis/id_rsa.enc -out .travis/id_rsa -d
+env:
+  global:
+    secure: XebeqrNcH0N+d27m3t6yEUUplkDzJ4EKItOAXsHu9q6x2YtzP7s5u48JCz4LP8w3ZgduRPFXJMlFuOl60QwcUGgX8VSIMVPoy7Ll82rwdOrWfnsTct4MVhlb8adJYWeKJE1XCFyCfjoNuc/LO/7cUYrzt3+pts31HP8SkgE2/wAym32hNN4jApdHRjIa5tU3aJqRtAb7GHhA0d1vQfIfjWLHfOJ5yYwj4VboP+KDzScafzFRVJWqOcb425pW2W0VxNlTGk58fydLA/bACoRcEf2owJoigOCHVAlkXHQqRubKAAFun1421m7i49TvYC7d3qe4YNTmSROlnzljsZLu47MqWS/8nQWe5Ev1rI6RWVqL/nHAiUHEFzrXb5RZg8vACn+H5/ZGlBJ2wUGqJiCv5x0HF/sk2tnjcQQ9cb6s0k8gEmt294LTEsXKjQTGT5pPx5QCyIRonzsD356o6kGwHxuzWx5HCUHRxGIGqGapJ2onkuvl94klBnEezaMdSfQdbIZe5oJA/Gd2aSEBSsJvmKKNbSy45AO8k+MDhDh/rICW5mVE5hjEd62PcW0dudC7b5u0o21SWX1yc8GRzqnDSlyfCH2MqKK7BUbIwh0JtMntnrGV+ygioglcSJ65jqbYwfP8EijZtq2IBc2e5xIX1LvY3kBix4eDBt2Nm2cwHR0=
