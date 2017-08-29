@@ -8,10 +8,11 @@ fi
 
 DEPLOY_DIR=$2
 git config --global push.default matching
-git remote add deploy git@45.56.70.141:$DEPLOY_DIR
+git remote add deploy git@$IP:$DEPLOY_DIR
+echo "pushing to git"
 git push deploy master
 
-ssh apps@45.56.70.141 << EOF
+ssh apps@$IP << EOF
   cd $DEPLOY_DIR
   npm install
   npm run build
