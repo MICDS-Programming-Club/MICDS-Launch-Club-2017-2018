@@ -10,7 +10,7 @@ DEPLOY_DIR=$2
 git config --global push.default matching
 git remote add deploy apps@$IP:$DEPLOY_DIR
 echo "pushing to git $IP:$DEPLOY_DIR"
-git push deploy master
+GIT_SSH_COMMAND="ssh -vvv" git push deploy master
 
 ssh apps@$IP << EOF
   cd $DEPLOY_DIR
