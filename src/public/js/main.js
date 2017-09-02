@@ -38,3 +38,4 @@ $('.divider').click(function() {
 		}, 605);
 	}
 })
+var draw = SVG('cta-background').size('100%', '100%');

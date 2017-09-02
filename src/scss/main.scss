@@ -3,6 +3,9 @@ $school-dark-red: #581021;
 $school-green: #04463d;
 $school-grey: #bcbbb6;
 
+$theme-white: #fff;
+$theme-space-black: #212121;
+
 @import '../../node_modules/bootstrap/scss/functions';
 @import '../../node_modules/bootstrap/scss/variables';
 
@@ -17,6 +20,7 @@ $theme-colors: (
   dark: $gray-800
 );
 
+$enable-rounded: false;
 $enable-shadows: true;
 
 @import '../../node_modules/bootstrap/scss/bootstrap';
@@ -42,24 +46,25 @@ $enable-shadows: true;
 }
 
 .display-3 {
-  position: relative;
-  z-index: 0;
-  &:before {
-    z-index: -1;
-    content: '';
-    display: block;
-    position: absolute;
-    top: -5%;
-    left: 48%;
-    background: transparent;
-    transform: skew(-20deg);
-    height: 110%;
-    width: 104%;
-    margin-left: -50%;
-    border-left: 0.2rem solid;
-    border-bottom: 0.2rem solid;
-    border-image: linear-gradient(135deg, $school-red, $school-red 30%, transparent 60%, transparent) 1 1;
-  }
+	position: relative;
+	z-index: 0;
+
+	&:before {
+		z-index: -1;
+		content: '';
+		display: block;
+		position: absolute;
+		top: -5%;
+		left: 48%;
+		background: transparent;
+		transform: skew(-20deg);
+		height: 110%;
+		width: 104%;
+		margin-left: -50%;
+		border-left: 0.2rem solid;
+		border-bottom: 0.2rem solid;
+		border-image: linear-gradient(135deg, $school-red, $school-red 30%, transparent 60%, transparent) 1 1;
+	}
 }
 
 .was-validated .form-control:invalid {
@@ -85,12 +90,17 @@ $enable-shadows: true;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   p, h1 {
     text-align: center;
   }
+  .logo {
+    width: 10rem;
+    height: 10rem;
+  }
   .sign-up {
     position: absolute;
-    bottom: 25%;
+    bottom: 15%;
     left: 0;
     width: 100%;
     button {
@@ -170,23 +180,56 @@ $enable-shadows: true;
     transform: translateY(92vh);
   }
 }
+// .cta {
+// 	position: relative;
+// 	height: calc(100vh - 12rem);
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+//
+// 	p, h1 {
+// 		text-align: center;
+// 	}
+//
+// 	.sign-up {
+// 		position: absolute;
+// 		bottom: 8rem;
+// 		left: 0;
+// 		width: 100%
+// 	}
+// }
+
+.cta {
+	position: relative;
+
+	background: $theme-space-black;
+	color: $theme-white;
+
+	#cta-background {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+}
 
 // Small devices (landscape phones, 544px and up)
 @include media-breakpoint-up(sm) {
-	
+
 }
 
 // Medium devices (tablets, 768px and up)
 @include media-breakpoint-up(md) {
-	
+
 }
 
 // Large devices (desktops, 992px and up)
 @include media-breakpoint-up(lg) {
-	
+
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @include media-breakpoint-up(xl) {
-	
+
 }
