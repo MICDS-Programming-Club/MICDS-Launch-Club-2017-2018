@@ -8,11 +8,11 @@ $school-grey: #bcbbb6;
 
 $theme-colors: (
   primary: $school-red,
-  secondary: $school-dark-red,
+  secondary: lighten($school-red, 20%),
   success: $green,
   info: $cyan,
   warning: $yellow,
-  danger: $red,
+  danger: $school-dark-red,
   light: $gray-100,
   dark: $gray-800
 );
@@ -24,6 +24,8 @@ $enable-shadows: true;
 .btn {
   position: relative;
   z-index: 0;
+  margin: 0 1rem !important;
+  padding: 0.4rem 0.6rem;
   &:before {
     z-index: -1;
     content: '';
@@ -60,9 +62,26 @@ $enable-shadows: true;
   }
 }
 
+.was-validated .form-control:invalid {
+  border-color: $school-dark-red;
+}
+
+.invalid-feedback {
+  color: $school-dark-red;
+}
+
+#signupModal {
+  .modal-dialog {
+    margin: 20rem auto;
+  }
+  #signup-feedback {
+    display: none;
+  }
+}
+
 .front-page {
   position: relative;
-  height: calc(100vh - 12rem);
+  height: 92vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,9 +90,84 @@ $enable-shadows: true;
   }
   .sign-up {
     position: absolute;
-    bottom: 8rem;
+    bottom: 25%;
     left: 0;
-    width: 100%
+    width: 100%;
+    button {
+      width: 16rem;
+      height: 6rem;
+      font-size: 2rem;;
+    }
+  }
+  &.moving-up {
+    animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-up;
+  }
+  &.moving-down {
+    animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-down;
+  }
+  &.top {
+    margin-top: -92vh;
+  }
+}
+
+.divider {
+  z-index: 100;
+  height: 8%;
+  width: 100%;
+  position: absolute;
+  top: unset;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $school-red;
+  color: white;
+  transition: height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  .down-chevron {
+    width: 4rem;
+    height: 4rem;
+    margin-left: 1rem;
+    overflow: hidden;
+    svg path  {
+      fill: #FFF;
+    }
+  }
+  &:hover {
+    height: 12%;
+    .down-chevron {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+  &.moving-up {
+    height: 8%;
+    animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-up;
+  }
+  &.moving-down {
+    height: 8%;
+    animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-down;
+  }
+  &.top {
+    bottom: unset;
+    top: 0;
+  }
+}
+
+@keyframes move-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-92vh);
+  }
+}
+@keyframes move-down {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(92vh);
   }
 }
 

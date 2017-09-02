@@ -12,19 +12,12 @@ const async   = require('async');
 const mail    = require(__dirname + '/mail.js');
 const request = require('request');
 
-const levelTypes = [
-	'beginner',
-	'intermediate',
-	'advanced'
-];
-
 /**
- * Sign a user up for the programming club
+ * Sign a user up for the Entrepreneurship club
  * @function signup
  *
  * @param {Object} data - Data about user
  * @param {string} data.email - Users's school email (ends with @micds.org)
- * @param {string} data.level - User's programming level ('beginner'|'intermediate'|'advanced')
  * @param {signupCallback} callback - Callback
  */
 
@@ -62,17 +55,12 @@ function signup(db, data, callback) {
 		callback(new Error('Invalid graduation year!'));
 		return;
 	}
-	if(!_.contains(levelTypes, data.level)) {
-		callback(new Error('Invalid programming level!'));
-		return;
-	}
 
 	const newMember = {
 		student: data.email,
 		firstName: data.firstName,
 		lastName: data.lastName,
-		gradYear: data.gradYear,
-		level: data.level
+		gradYear: data.gradYear
 	};
 
 	// Register user

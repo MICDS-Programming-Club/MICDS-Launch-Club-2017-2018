@@ -9,16 +9,83 @@
 		<link rel="stylesheet" href="/css/main.css">
 	</head>
 	<body>
+		<div class="modal fade" id="signupModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">New Member</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="signup-form" novalidate>
+							<div class="form-group">
+								<label for="name">Name</label>
+								<div class="form-row">
+									<div class="col">
+										<input name="firstName" id="name" type="text" class="form-control form-control-lg" placeholder="First name" required>
+										<div class="invalid-feedback">
+											Please provide a valid name.
+										</div>
+									</div>
+									<div class="col">
+										<input name="lastName" type="text" class="form-control form-control-lg" placeholder="Last name" required>
+										<div class="invalid-feedback">
+											Please provide a valid name.
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<div class="input-group">
+									<input name="email" id="email" type="text" class="form-control form-control-lg" placeholder="Email" required>
+									<span class="input-group-addon">@micds.org</span>
+								</div>
+								<div class="invalid-feedback">
+									Please provide a valid micds email.
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="gradYear">Year of Graduation</label>
+								<div class="input-group">
+									<select name="gradYear" id="gradYear" type="text" class="form-control form-control-lg" required>
+										<option value="2018">2018 (Senior)</option>
+										<option value="2019">2019 (Junior)</option>
+										<option value="2020">2020 (Sophomore)</option>
+										<option value="2021">2021 (Freshman)</option>
+									</select>
+								</div>
+								<div class="invalid-feedback">
+									Please provide a valid graduation year.
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<small id="signup-feedback" class="text-danger"></small>
+						<button id="signup-submit" type="button" class="btn btn-primary btn-lg">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="jumbotron front-page">
 			<h1 class="display-1">MICDS Entrepreneurship Club</h1>
 			<p class="lead">
 				Powered by MIT Launch
 			</p>
 			<p class="lead sign-up">
-				<button class="btn btn-primary btn-lg" href="#">Sign Up Now!</button>
+				<button class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#signupModal">SIGN UP NOW!</button>
 			</p>
 		</div>
-		<div class="container">
+		<div class="divider">
+			<div class="display-4">More Information</div>
+			<div class="down-chevron">
+				<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 1279.0174 1598.999125" version="1.1" x="0px" y="0px"><g transform="translate(36.092995,2263.9784)"><path style="" d="m 559.66571,-985.24264 c -20.58947,-1.755 -45.75489,-4.8152 -61.84961,-7.521 -232.28312,-39.05116 -423.529411,-201.18756 -500.3924308,-424.22676 -14.6273602,-42.4453 -25.1549402,-89.6249 -31.0952602,-139.3541 -3.22862,-27.0284 -3.22862,-109.2217 0,-136.2501 17.70722,-148.2356 78.15105,-276.1044 179.537841,-379.8118 104.13727,-106.5209 236.69472,-170.9064 389.42445,-189.1505 27.02833,-3.2286 109.22169,-3.2286 136.25002,0 152.72973,18.2441 285.28718,82.6296 389.42448,189.1505 101.3868,103.7074 161.8306,231.5762 179.5378,379.8118 3.2286,27.0284 3.2286,109.2217 0,136.2501 -17.7072,148.2356 -78.151,276.1044 -179.5378,379.8118 -103.93386,106.3128 -236.99802,171.0211 -388.79948,189.07086 -15.98524,1.9008 -97.39552,3.5066 -112.50001,2.2192 z m 258.43615,-617.03806 c 117.73514,-117.7336 214.06384,-214.6182 214.06384,-215.2991 0,-1.6336 -41.47716,-43.1398 -43.10966,-43.1398 -0.69425,0 -87.88864,86.625 -193.76532,192.5 l -192.50305,192.5001 -192.49698,-192.5001 c -105.87333,-105.875 -193.05412,-192.5 -193.73509,-192.5 -1.63383,0 -43.13992,41.4772 -43.13992,43.1099 0,1.6426 427.72974,429.3902 429.3723,429.3902 0.68751,0 97.57875,-96.3276 215.31388,-214.0612 z" fill="#000000"/></g></svg>
+			</div>
+		</div>
+		<div class="container info">
 			<div class="intro">
 				<h1 class="display-3">Introduction</h1>
 				<p>Launch provides materials and mentorship support to high schools throughout the school year to allow students to develop entrepreneurial skills and mindset by launching startups. This is not a business plan contest. The aim is to create a real startup – to solve a real need in a differentiated way. The focus is on taking action, learning from results, and making changes to improve chances of success. </p>
