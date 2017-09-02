@@ -164,6 +164,10 @@ $enable-shadows: true;
   }
 }
 
+.info {
+  margin-top: 8%;
+}
+
 @keyframes move-up {
   from {
     transform: translateY(0);

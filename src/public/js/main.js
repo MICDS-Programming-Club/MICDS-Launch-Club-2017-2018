@@ -25,16 +25,20 @@ $('.info').hide();
 $('.divider').click(function() {
 	let pageTop = $(this).add($('.front-page'));
 	if (pageTop.hasClass('top')) {
+		$('.info').hide();
 		pageTop.toggleClass('moving-down');
 		setTimeout(() => {
 			pageTop.toggleClass('moving-down');
 			pageTop.toggleClass('top');
+			$('#div-text').text('More Information');
 		}, 600);
 	} else {
 		pageTop.toggleClass('moving-up');
 		setTimeout(() => {
 			pageTop.toggleClass('top');
 			pageTop.toggleClass('moving-up');
+			$('.info').show();
+			$('#div-text').text('Sign Up Now');
 		}, 605);
 	}
 })
