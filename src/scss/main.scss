@@ -85,6 +85,7 @@ $enable-shadows: true;
 }
 
 .front-page {
+  padding-bottom: 18rem;
   position: relative;
   height: 92vh;
   display: flex;
@@ -95,8 +96,7 @@ $enable-shadows: true;
     text-align: center;
   }
   .logo {
-    width: 10rem;
-    height: 10rem;
+    width: 24rem;
   }
   .sign-up {
     position: absolute;
