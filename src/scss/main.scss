@@ -71,6 +71,14 @@ $enable-shadows: true;
   border-color: $school-dark-red;
 }
 
+.was-validated .form-check-input.is-invalid ~ .invalid-feedback {
+  display: block
+}
+
+.was-validated .form-control:valid ~ .invalid-feedback {
+  display: none;
+}
+
 .invalid-feedback {
   color: $school-dark-red;
 }

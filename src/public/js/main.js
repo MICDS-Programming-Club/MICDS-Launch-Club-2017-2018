@@ -1,22 +1,36 @@
 'use strict';
 
+$('#signupModal').on('show.bs.modal', () => {
+	let form = document.getElementById('signup-form');
+	form.reset();
+});
+
+$('#signupModal').on('hide.bs.modal', () => {
+	let form = document.getElementById('signup-form');
+	form.reset();
+});
+
 $('#signup-submit').click(() => {
 	$('#signup-feedback').css('display', 'block').text('');
 	let form = document.getElementById('signup-form');
-	if (form.checkValidity()) {
-		let body = $.param($('#signup-form').serializeArray());
+	let formData = $(form).serializeArray();
+	let checkboxValid = formData.find(control => control.name === 'interestCompany') && formData.find(control => control.name === 'interestCompany');
+	if (form.checkValidity() && checkboxValid) {
+		let body = $.param(formData);
 		$.post('http://localhost:1506/signup', body, (data) => {
 			if (data.error) {
 				$('#signup-feedback').css('display', 'block').text(data.error);
 			} else {
 				console.log('succ');
 				$('#signupModal').modal('hide');
-				form.reset();
 			}
 		})
 	} else {
 		$(form).addClass('was-validated');
 		$('.form-control:invalid').parent().siblings().filter('.invalid-feedback').css('display', 'block');
+		if (!checkboxValid) {
+			$('.form-check-input').addClass('is-invalid');
+		}
 	}
 });
 
@@ -41,5 +55,6 @@ $('.divider').click(function() {
 			$('#div-text').text('Sign Up Now');
 		}, 605);
 	}
-})
+});
+
 var draw = SVG('cta-background').size('100%', '100%');
