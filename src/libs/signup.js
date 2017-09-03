@@ -51,8 +51,12 @@ function signup(db, data, callback) {
 		callback(new Error('Invalid last name!'));
 		return;
 	}
-	if(typeof data.gradYear !== 'number' || data.gradYear % 1 !== 0) {
+	if(typeof parseInt(data.gradYear) !== 'number' || parseInt(data.gradYear) % 1 !== 0) {
 		callback(new Error('Invalid graduation year!'));
+		return;
+	}
+	if(data.interestCompany !== '1' || data.interestLeader !== '1') {
+		callback(new Error('Invalid interest selection!'));
 		return;
 	}
 
@@ -60,7 +64,9 @@ function signup(db, data, callback) {
 		student: data.email,
 		firstName: data.firstName,
 		lastName: data.lastName,
-		gradYear: data.gradYear
+		gradYear: data.gradYear,
+		interestCompany: !!data.interestCompany,
+		interestLeader: !!data.interestLeader
 	};
 
 	// Register user
