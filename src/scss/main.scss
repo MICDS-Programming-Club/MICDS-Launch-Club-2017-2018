@@ -25,6 +25,10 @@ $enable-shadows: true;
 
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
+p {
+  font-size: 1.2rem;
+}
+
 .btn {
   position: relative;
   z-index: 0;
@@ -68,10 +72,6 @@ $enable-shadows: true;
 	}
 }
 
-.display-4 {
-  
-}
-
 .was-validated .form-control:invalid {
   border-color: $school-dark-red;
 }
@@ -100,7 +100,7 @@ $enable-shadows: true;
 .front-page {
   padding-bottom: 18rem;
   position: relative;
-  height: 92vh;
+  height: 94vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,13 +129,13 @@ $enable-shadows: true;
     animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-down;
   }
   &.top {
-    margin-top: -92vh;
+    margin-top: -94vh;
   }
 }
 
 .divider {
   z-index: 100;
-  height: 8%;
+  height: 6%;
   width: 100%;
   position: fixed;
   top: unset;
@@ -145,7 +145,7 @@ $enable-shadows: true;
   align-items: center;
   background: $school-red;
   color: white;
-  transition: height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
   .down-chevron {
     width: 4rem;
@@ -161,18 +161,21 @@ $enable-shadows: true;
     }
   }
   &:hover {
-    height: 12%;
+    background: darken($school-red, 10%);
     .down-chevron {
       width: 4rem;
       height: 4rem;
     }
   }
+  &:active {
+    background: lighten($school-red, 10%);
+  }
   &.moving-up {
-    height: 8%;
+    height: 6%;
     animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-up;
   }
   &.moving-down {
-    height: 8%;
+    height: 6%;
     animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-down;
   }
   &.top {
@@ -182,7 +185,7 @@ $enable-shadows: true;
 }
 
 .info {
-  margin-top: 8%;
+  margin-top: 6%;
   margin-bottom: -100%;
   &.moving-up {
     animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-up;
@@ -191,7 +194,7 @@ $enable-shadows: true;
     animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-down;
   }
   &.top {
-    margin-bottom: -8%;
+    margin-bottom: -6%;
   }
   .club-file {
     img {
@@ -199,9 +202,11 @@ $enable-shadows: true;
       height: 2rem;
       margin: -0.3rem 0.5rem 0 -0.3rem;
     }
+    text-align: center;
+    padding: 0.5rem 0.75rem;
   }
   .leaders {
-    h2 {
+    .display-4 {
       height: 2.2em;
     }
     .card {
@@ -211,12 +216,48 @@ $enable-shadows: true;
   }
 }
 
+.social-media {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-top: 6%;
+  li {
+    background: transparent;
+    color: white;
+    display: flex;
+    background: $theme-space-black;
+    img {
+      height: 2rem;
+      margin-right: 0.5rem;
+    }
+    a {
+      color: $school-red;
+      line-height: 2rem;
+      align-self: stretch;
+      text-align: center;
+      &:hover {
+        color: lighten($school-red, 20%);
+      }
+    }
+  }
+  &.top {
+    li {
+      color: black;
+      background: white;
+    }
+  }
+}
+
 @keyframes move-up {
   from {
     transform: translateY(0);
   }
   to {
-    transform: translateY(-92vh);
+    transform: translateY(-94vh);
   }
 }
 @keyframes move-down {
@@ -224,7 +265,13 @@ $enable-shadows: true;
     transform: translateY(0);
   }
   to {
-    transform: translateY(92vh);
+    transform: translateY(94vh);
+  }
+}
+
+.faq {
+  .question {
+    margin-top: 2rem;
   }
 }
 // .cta {
@@ -263,9 +310,46 @@ $enable-shadows: true;
 }
 
 // Small devices (landscape phones, 544px and up)
-@include media-breakpoint-up(sm) {
-
+@media screen and (max-width: 544px) {
+  .display-1 {
+    font-size: 3.5rem;
+  }
+  .display-3 {
+    font-size: 3rem;
+    margin-left: 1rem;
+    white-space: nowrap;
+    &:before {
+      max-width: 100%;
+    }
+  }
+  .display-4 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .info .leaders .display-4 {
+    height: 1.1em;
+  }
+  .social-media {
+    right: -73%;
+    margin-top: 20%;
+    li:nth-child(1) {
+      right: 3.5rem;
+    }
+    li:nth-child(n + 2) {
+      right: -100%;
+    }
+    &.open {
+      right: 0;
+      li {
+        right: 0;
+      }
+    }
+  }
+  .info {
+    margin-top: 20%;
+  }
 }
+
 
 // Medium devices (tablets, 768px and up)
 @include media-breakpoint-up(md) {

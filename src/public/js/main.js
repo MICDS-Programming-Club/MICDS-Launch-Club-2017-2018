@@ -55,7 +55,7 @@ $('#signup-submit').click(function() {
 $('.info').hide();
 
 $('.divider').click(function() {
-	let pageTop = $(this).add($('.front-page')).add($('.info'));
+	let pageTop = $(this).add($('.front-page')).add($('.info')).add($('.social-media'));
 	if (pageTop.hasClass('top')) {
 		pageTop.toggleClass('moving-down');
 		animating = true;
@@ -82,5 +82,18 @@ $('.divider').click(function() {
 		}, 600);
 	}
 });
+
+let sidebarOpen = false;
+$('.social-media').click(function() {
+	$(this).toggleClass('open');
+	sidebarOpen = !sidebarOpen;
+});
+
+if (matchMedia('screen and (max-width: 544px)').matches) {
+	$('h2').siblings().hide();
+	$('h2').click(function() {
+		$(this).siblings().fadeIn();
+	});
+}
 
 var draw = SVG('cta-background').size('100%', '100%');
