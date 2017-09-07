@@ -90,7 +90,7 @@ p {
 
 #signupModal {
   .modal-dialog {
-    margin: 20rem auto;
+    margin: 15% auto;
   }
   #signup-feedback {
     display: none;
@@ -131,6 +131,12 @@ p {
   &.top {
     margin-top: -94vh;
   }
+  & > * {
+    z-index: 100;
+  }
+  #cta-background {
+    z-index: 99;
+  }
 }
 
 .divider {
@@ -148,8 +154,8 @@ p {
   transition: background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
   .down-chevron {
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     margin-left: 1rem;
     overflow: hidden;
     transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -250,6 +256,16 @@ p {
       background: white;
     }
   }
+  right: -19rem;
+  li:nth-child(1) {
+    right: 3.5rem;
+  }
+  &.open {
+    right: 0;
+    li {
+      right: 0;
+    }
+  }
 }
 
 @keyframes move-up {
@@ -300,7 +316,6 @@ p {
 	color: $theme-white;
 
 	#cta-background {
-    z-index: -1;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -330,20 +345,7 @@ p {
     height: 1.1em;
   }
   .social-media {
-    right: -73%;
     margin-top: 20%;
-    li:nth-child(1) {
-      right: 3.5rem;
-    }
-    li:nth-child(n + 2) {
-      right: -100%;
-    }
-    &.open {
-      right: 0;
-      li {
-        right: 0;
-      }
-    }
   }
   .info {
     margin-top: 20%;

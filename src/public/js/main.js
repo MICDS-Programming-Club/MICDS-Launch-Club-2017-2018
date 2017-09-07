@@ -96,4 +96,16 @@ if (matchMedia('screen and (max-width: 544px)').matches) {
 	});
 }
 
-var draw = SVG('cta-background').size('100%', '100%');
+let draw = SVG('cta-background').size('100%', '100%');
+let rockets = [];
+for (let i = 0; i < 5; i++) {
+	let xPos = Math.random() * (draw.node.clientWidth);
+	let yPos = draw.node.clientHeight - xPos * draw.node.clientHeight / draw.node.clientWidth;
+	let animTime = 5000 + Math.random() * 10000;
+	let rocket = draw.use('rocket', '/assets/rocket.svg')
+		.move(xPos + draw.node.clientWidth / 2, yPos + draw.node.clientHeight / 2)
+		.animate(animTime).dmove(-1.3 * draw.node.clientWidth, -1.3 * draw.node.clientHeight).loop();
+
+	rockets.push(rocket);
+}
+
