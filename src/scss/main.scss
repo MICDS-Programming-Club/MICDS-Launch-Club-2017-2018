@@ -168,10 +168,6 @@ p {
   }
   &:hover {
     background: darken($school-red, 10%);
-    .down-chevron {
-      width: 4rem;
-      height: 4rem;
-    }
   }
   &:active {
     background: lighten($school-red, 10%);
