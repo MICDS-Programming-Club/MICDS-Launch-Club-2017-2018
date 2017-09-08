@@ -1,3 +1,5 @@
+@import 'star.css';
+
 $school-red: #d12229;
 $school-dark-red: #581021;
 $school-green: #04463d;
@@ -136,6 +138,7 @@ p {
   }
   #cta-background {
     z-index: 99;
+    overflow: hidden;
   }
 }
 
@@ -316,7 +319,8 @@ p {
 		top: 0;
 		right: 0;
 		bottom: 0;
-		left: 0;
+    left: 0;
+    
 	}
 }
 

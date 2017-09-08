@@ -96,15 +96,21 @@ if (matchMedia('screen and (max-width: 544px)').matches) {
 	});
 }
 
-let draw = SVG('cta-background').size('100%', '100%');
-let rockets = [];
-for (let i = 0; i < 5; i++) {
+function animateRocket(svg) {
 	let xPos = Math.random() * (draw.node.clientWidth);
 	let yPos = draw.node.clientHeight - xPos * draw.node.clientHeight / draw.node.clientWidth;
 	let animTime = 5000 + Math.random() * 10000;
-	let rocket = draw.use('rocket', '/assets/rocket.svg')
-		.move(xPos + draw.node.clientWidth / 2, yPos + draw.node.clientHeight / 2)
-		.animate(animTime).dmove(-1.3 * draw.node.clientWidth, -1.3 * draw.node.clientHeight).loop();
+	return svg.move(xPos + draw.node.clientWidth / 2, yPos + draw.node.clientHeight / 2)
+		.animate(animTime).dmove(-1.3 * draw.node.clientWidth, -1.3 * draw.node.clientHeight)
+		.afterAll(function() { animateRocket(this); });
+}
+
+let draw = SVG('cta-background').size('100%', '100%');
+let rockets = [];
+for (let i = 0; i < 5; i++) {
+	let rocket = draw.use('rocket', '/assets/shooting_star.svg')
+		.size(200, 200);
+	animateRocket(rocket);
 
 	rockets.push(rocket);
 }
