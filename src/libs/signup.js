@@ -6,6 +6,7 @@
  */
 
 const config = require(__dirname + '/config.js');
+const googleGroup = require(__dirname + '/googleGroup.js');
 
 const _       = require('underscore');
 const async   = require('async');
@@ -55,7 +56,7 @@ function signup(db, data, callback) {
 		callback(new Error('Invalid graduation year!'));
 		return;
 	}
-	if(data.interestCompany !== '1' || data.interestLeader !== '1') {
+	if(data.interestCompany !== '1' &&  data.interestLeader !== '1') {
 		callback(new Error('Invalid interest selection!'));
 		return;
 	}
@@ -70,7 +71,7 @@ function signup(db, data, callback) {
 	};
 
 	// Register user
-	async.parallel([
+	async.series([
 		// Insert user in database
 		function(callback) {
 			var programmerData = db.collection('members');
@@ -115,7 +116,7 @@ function signup(db, data, callback) {
 				];
 
 				if(err || !body || (!body.ok && !_.contains(allowedErrors, body.error))) {
-					callback(new Error('There was a problem inviting the user to the Slack group!'));
+					callback(new Error('There was a problem inviting the user to the Slack group! ' + body.error));
 					return;
 				}
 
@@ -123,6 +124,16 @@ function signup(db, data, callback) {
 
 			});
 		}
+		//invite to google group
+		// function(callback) {
+		// 	googleGroup.addMember(data.email + '@micds.org', (err) => {
+		// 		if (err) {
+		// 			callback(new Error(err));
+		// 			return;
+		// 		}
+		// 		callback(null)
+		// 	});
+		// }
 	], function(err, results) {
 		if(err) {
 			callback(err);
