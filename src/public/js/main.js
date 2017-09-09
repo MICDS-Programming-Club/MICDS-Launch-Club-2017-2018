@@ -55,7 +55,7 @@ $('#signup-submit').click(function() {
 $('.info').hide();
 
 $('.divider').click(function() {
-	let pageTop = $(this).add($('.front-page')).add($('.info')).add($('.social-media'));
+	let pageTop = $(this).add($('.front-page')).add($('.info')).add($('.social-media')).add($('.rocket'));
 	if (pageTop.hasClass('top')) {
 		pageTop.toggleClass('moving-down');
 		animating = true;

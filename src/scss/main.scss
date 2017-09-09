@@ -267,6 +267,26 @@ p {
   }
 }
 
+.rocket {
+  z-index: 102;
+  height: 70%;
+  width: 25%;
+  position: fixed;
+  bottom: -100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  &.moving-up {
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translate(-50%, -300%);
+  }
+  &.moving-down {
+    transform: translate(-50%, 0%);
+  }
+  &.top {
+    transform: translate(-50%, 0);
+  }
+}
+
 @keyframes move-up {
   from {
     transform: translateY(0);
