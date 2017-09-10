@@ -111,7 +111,7 @@ p {
     text-align: center;
   }
   .logo {
-    width: 24rem;
+    max-height: 24rem;
   }
   .sign-up {
     position: absolute;
@@ -347,22 +347,47 @@ p {
 // Small devices (landscape phones, 544px and up)
 @media screen and (max-width: 544px) {
   .display-1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
   .display-3 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-left: 1rem;
-    white-space: nowrap;
+    white-space: wrap;
     &:before {
       max-width: 100%;
     }
   }
   .display-4 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     text-align: center;
   }
-  .info .leaders .display-4 {
-    height: 1.1em;
+  .front-page {
+    padding-bottom: 10rem;
+    .sign-up {
+      bottom: 10%;
+      button {
+        width: unset;
+        height: unset;
+        font-size: unset;
+      }
+    }
+    .logo {
+      width: 12rem
+    }
+  }
+  .divider {
+    .down-chevron {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  .info {
+    h2 {
+      font-size: 1.5rem;
+    }
+    .leaders .display-4 {
+      height: 1.1em;
+    }
   }
   .social-media {
     margin-top: 20%;

@@ -34,7 +34,7 @@ $('#signup-submit').click(function() {
 	if (form.checkValidity() && checkboxValid) {
 		$(this).attr('disabled', '');
 		let body = $.param(formData);
-		$.post('http://localhost:1506/signup', body, (data) => {
+		$.post('https://micdsmitlaunch.club/signup', body, (data) => {
 			$(this).attr('disabled', null);
 			if (data.error) {
 				$('#signup-feedback').css('display', 'block').text(data.error);
@@ -90,8 +90,8 @@ $('.social-media').click(function() {
 });
 
 if (matchMedia('screen and (max-width: 544px)').matches) {
-	$('h2').siblings().hide();
-	$('h2').click(function() {
+	$('h2').add($('h1.display-3')).siblings().hide();
+	$('h2').add($('h1.display-3')).click(function() {
 		$(this).siblings().fadeIn();
 	});
 }
