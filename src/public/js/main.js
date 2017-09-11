@@ -1,5 +1,11 @@
 'use strict';
 
+let prod = true;
+if (window.location.hostname === 'localhost') {
+	console.log('not prod');
+	prod = false;
+}
+
 let onInfoPage = false;
 let animating = false;
 window.addEventListener('wheel', (e) => {
@@ -34,7 +40,7 @@ $('#signup-submit').click(function() {
 	if (form.checkValidity() && checkboxValid) {
 		$(this).attr('disabled', '');
 		let body = $.param(formData);
-		$.post('https://micdsmitlaunch.club/signup', body, (data) => {
+		$.post(prod ? 'https://micdsmitlaunch.club/signup' : 'http://localhost:1506/signup', body, (data) => {
 			$(this).attr('disabled', null);
 			if (data.error) {
 				$('#signup-feedback').css('display', 'block').text(data.error);
@@ -52,17 +58,14 @@ $('#signup-submit').click(function() {
 	}
 });
 
-$('.info').hide();
-
 $('.divider').click(function() {
-	let pageTop = $(this).add($('.front-page')).add($('.info')).add($('.social-media')).add($('.rocket'));
+	let pageTop = $(this).add($('body')).add($('.front-page')).add($('.social-media')).add($('.rocket'));
 	if (pageTop.hasClass('top')) {
 		pageTop.toggleClass('moving-down');
 		animating = true;
 		setTimeout(() => {
 			animating = false;
 			onInfoPage = false;
-			$('.info').hide();
 			pageTop.toggleClass('moving-down');
 			pageTop.toggleClass('top');
 			$('#div-text').text('More Information');
@@ -71,7 +74,6 @@ $('.divider').click(function() {
 	} else {
 		pageTop.toggleClass('moving-up');
 		animating = true;
-		$('.info').show();
 		setTimeout(() => {
 			animating = false;
 			onInfoPage = true;

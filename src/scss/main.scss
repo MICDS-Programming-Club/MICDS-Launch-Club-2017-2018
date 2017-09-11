@@ -27,6 +27,19 @@ $enable-shadows: true;
 
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
+body {
+  overflow: hidden;
+  &.moving-up {
+    overflow: scroll;
+  }
+  &.moving-down {
+    overflow: hidden;
+  }
+  &.top {
+    overflow: scroll;
+  }
+}
+
 p {
   font-size: 1.2rem;
 }
@@ -100,8 +113,10 @@ p {
 }
 
 .front-page {
-  padding-bottom: 18rem;
-  position: relative;
+  width: 100%;
+  z-index: 101;
+  position: fixed;
+  top: 0;
   height: 94vh;
   display: flex;
   flex-direction: column;
@@ -114,14 +129,13 @@ p {
     max-height: 24rem;
   }
   .sign-up {
-    position: absolute;
-    bottom: 15%;
-    left: 0;
+    margin-top: 2rem;
+    text-align: center;
     width: 100%;
     button {
       width: 16rem;
       height: 6rem;
-      font-size: 2rem;;
+      font-size: 2rem;
     }
   }
   &.moving-up {
@@ -192,15 +206,6 @@ p {
 .info {
   margin-top: 6%;
   margin-bottom: -100%;
-  &.moving-up {
-    animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-up;
-  }
-  &.moving-down {
-    animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards move-down;
-  }
-  &.top {
-    margin-bottom: -6%;
-  }
   .club-file {
     img {
       width: 2rem;
@@ -218,6 +223,9 @@ p {
       white-space: nowrap;
       background: lighten($school-red, 40%);
     }
+  }
+  .faq {
+    margin-bottom: 10rem;
   }
 }
 
@@ -329,8 +337,6 @@ p {
 // }
 
 .cta {
-	position: relative;
-
 	background: $theme-space-black;
 	color: $theme-white;
 
@@ -345,7 +351,7 @@ p {
 }
 
 // Small devices (landscape phones, 544px and up)
-@media screen and (max-width: 544px) {
+@media screen and (max-width: 544px), screen and (max-height: 544px) {
   .display-1 {
     font-size: 2.5rem;
   }
@@ -362,9 +368,7 @@ p {
     text-align: center;
   }
   .front-page {
-    padding-bottom: 10rem;
     .sign-up {
-      bottom: 10%;
       button {
         width: unset;
         height: unset;
@@ -397,6 +401,19 @@ p {
   }
 }
 
+
+@media screen and (max-height: 544px) {
+  .front-page {
+    padding-bottom: 0rem;
+    .sign-up {
+      position: absolute;
+      text-align: unset;
+      margin-top: 0rem;
+      top: 1rem;
+      left: 1rem;
+    }
+  }
+}
 
 // Medium devices (tablets, 768px and up)
 @include media-breakpoint-up(md) {
