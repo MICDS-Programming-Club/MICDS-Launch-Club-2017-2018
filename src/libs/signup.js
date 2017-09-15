@@ -6,7 +6,7 @@
  */
 
 const config = require(__dirname + '/config.js');
-const googleGroup = require(__dirname + '/googleGroup.js');
+// const googleGroup = require(__dirname + '/googleGroup.js');
 
 const _       = require('underscore');
 const async   = require('async');
