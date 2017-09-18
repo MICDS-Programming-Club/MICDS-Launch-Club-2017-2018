@@ -1,0 +1,120 @@
+	fs.readFile(__dirname + '/libs/list.txt', 'utf8', (err, data) => {
+		let members = data.split('\r\n').map((x, i) => {
+			let name = x.split('\t')[0];
+			let email = x.split('\t')[1];
+			return {
+				student: email.split('@')[0],
+				firstName: name.split(' ')[0],
+				lastName: name.split(' ')[1],
+				gradYear: 2020,
+				interestCompany: true,
+				interestLeader: false,
+			}
+		});
+		let programmerData = db.collection('members');
+		
+		members.forEach((newMember, i) => {
+			programmerData.update({ student: newMember.student }, newMember, { upsert: true }, function(err, results) {
+				if(err) {
+					console.log(new Error('There was a problem inserting the student into the database!'));
+					return;
+				}
+	
+				console.log('inserted:', i+1);
+	
+			});
+		});
+	})
+
+Aanjaneyaa Venkataraman	avenkataraman@micds.org
+Aaron Hendricks	ahendricks@micds.org
+Ahmid Rehmani	ahrehmani@micds.org
+Ajay Dundoo	ajdundoo@micds.org
+Alexander Birkel	abirkel@micds.org
+Alexander Donovan	aldonovan@micds.org
+Alyssa Kalishman	alkalishman@micds.org
+Amir Shinawi	ashinawi@micds.org
+Andrew Howard	ahoward@micds.org
+Andrew Zhao	azhao@micds.org
+Aryan Motwani	amotwani@micds.org
+Ava Mandoli	amandoli@micds.org
+Azeem Aftab	aaftab@micds.org
+Beatriz Sadala	bsadala@micds.org
+Benjamin Hollander-Bodie	bhollander-bodie@micds.org
+Bianca Sforza	bisforza@micds.org
+Cameron Alexander	caalexander@micds.org
+Charles Ivie	chivie@micds.org
+Charles Selipsky	cselipsky@micds.org
+Colleen Sliney	csliney@micds.org
+Daniel George	dgeorge@micds.org
+DeShawn Sutton	mysutton@micds.org
+Devon Bierman	dbierman@micds.org
+Dillan Sant	dsant@micds.org
+Divya Singh	dsingh@micds.org
+Eden Tynes	etynes@micds.org
+Ella Durrill	edurrill@micds.org
+Eshaan Tibrewala	etibrewala@micds.org
+Ethan Beyzer	ebeyzer@micds.org
+Evan Washington	ewashington@micds.org
+Garrett Christian	gchristian@micds.org
+Gary Zhou	gzhou@micds.org
+General Dorsey	gdorsey@micds.org
+Grant Purdy	gpurdy@micds.org
+Hannah Goot	hgoot@micds.org
+Henry Posega Rappleye	hposegarappleye@micds.org
+Imaan Amin	iamin@micds.org
+Jack Cai	jcai@micds.org
+Jack Lee	jlee@micds.org
+Jack Parks	jparks@micds.org
+Jack Petersen	jpetersen@micds.org
+Jacob Morris	jamorris@micds.org
+Jacob Peistrup	jpeistrup@micds.org
+James Bilderback	jbilderback@micds.org
+Jeffrey Desloge	jdesloge@micds.org
+Jimmy Chalfant	jchalfant@micds.org
+Jimmy Hereford	jhereford@micds.org
+John Curylo	jcurylo@micds.org
+Joseph Coolidge	jcoolidge@micds.org
+Julia Kemp	jkemp@micds.org
+Justin Goldenberg	jgoldenberg@micds.org
+Kabir Singh	kasingh@micds.org
+Kevin Dong	kdong@micds.org
+Kevin Sugavanam	ksugavanam@micds.org
+Labrill Collins	lcollins@micds.org
+Lauren Wallace	lwallace@micds.org
+Lucas Icaza	licaza@micds.org
+Luke Bernstein	lbernstein@micds.org
+Luke McCollough	lmccollough@micds.org
+Madelyn Cowen	mcowen@micds.org
+Mason Hall	jhall@micds.org
+Matt Cowley	mcowley@micds.org
+Mehul Divecha	mdivecha@micds.org
+Michael Gira	mgira@micds.org
+Mika Shapshovich	mshapshovich@micds.org
+Minyi Zhang	mizhang@micds.org
+Nishanth Boppana	nboppana@micds.org
+Parker Perry	pperry@micds.org
+Poulomi Rudrappa	prudrappa@micds.org
+Prithvi Dhanabal	pdhanabal@micds.org
+Rafi Gil Diaz	rgildiaz@micds.org
+Rich Qian	rqian@micds.org
+Rohit Siddabattula	rsiddabattula@micds.org
+Ryan Ahn	rahn@micds.org
+Sam Kohler	skohler@micds.org
+Samer Hajji	shajji@micds.org
+Samuel Wienstroer	swienstroer@micds.org
+Sean Buchanan	sbuchanan@micds.org
+Sebastian Neumann	sneumann@micds.org
+Shawn Putman	sputman@micds.org
+Shibashis Mandal	smandal@micds.org
+Simrin Phatak	sphatak@micds.org
+Sophia Puertas	spuertas@micds.org
+Steve Schepman	sschepman@micds.org
+Tanay Chandak	tchandak@micds.org
+Taylor Johnson	tjohnson@micds.org
+Te`a Mitchell	tmitchell@micds.org
+Walker Graves	wgraves@micds.org
+Will Jones	wjones@micds.org
+Will Sheehan	wsheehan@micds.org
+William Thelen	wthelen@micds.org
+Yuxiao Zheng	yzheng@micds.org

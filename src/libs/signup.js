@@ -146,11 +146,11 @@ function signup(db, data, callback) {
 		request({
 			url: config.slack.webhookURL,
 			method: 'POST',
-			form: {
-				token: config.slack.token,
-				channel: config.slack.announceChannel,
+			json: {
 				text: '*' + data.firstName + ' ' + data.lastName + ' (' + data.gradYear + ')* just joined MIT Launch Club! An invitation has been sent to *' + data.email + '@micds.org*.'
 			}
+		}, function(err, response, body) {
+			console.log(response);
 		});
 
 	});
