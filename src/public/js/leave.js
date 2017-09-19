@@ -14,7 +14,7 @@ $('#leave-form').submit(function(event) {
 	if (this.checkValidity()) {
 		submitBtn.attr('disabled', '');
 		let body = $.param(formData);
-		$.post(prod ? 'https://micdsmitlaunch.club/signup' : 'http://localhost:1506/leave', body, (data) => {
+		$.post(prod ? 'https://micdsmitlaunch.club/leave' : 'http://localhost:1506/leave', body, (data) => {
 			$(this).attr('disabled', null);
 			if (data.error) {
 				$('#leave-feedback').css('display', 'block').text(data.error);
