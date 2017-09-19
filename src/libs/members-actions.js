@@ -32,16 +32,19 @@ function leave(db, data, callback) {
 			callback(new Error('User does not exist!'));
 			return;
 		}
-		// Send a message to Slack chat to celebrate!
-		request({
-			url: config.slack.webhookURL,
-			method: 'POST',
-			json: {
-				text: '*' + data.student + '* just left MIT Launch Club.'
-			}
-		}, function(err, response, body) {
-			callback(null)
-		});
+		// // Send a message to Slack chat to celebrate!
+		// request({
+		// 	url: config.slack.webhookURL,
+		// 	method: 'POST',
+		// 	json: {
+		// 		text: '*' + data.student + '* just left MIT Launch Club.',
+		// 		channel: 'leadership'
+		// 	}
+		// }, function(err, response, body) {
+		// 	console.log(response)
+		// 	callback(null)
+		// });
+		callback(null);
 	});
 
 }

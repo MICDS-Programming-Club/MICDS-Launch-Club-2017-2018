@@ -67,7 +67,8 @@ function signup(db, data, callback) {
 		lastName: data.lastName,
 		gradYear: data.gradYear,
 		interestCompany: !!data.interestCompany,
-		interestLeader: !!data.interestLeader
+		interestLeader: !!data.interestLeader,
+		unsubscribed: false
 	};
 
 	// Register user
