@@ -28,7 +28,7 @@ function leave(db, data, callback) {
 			return;
 		}
 
-		if (res.result.n === 0) {
+		if (res.result.nModified === 0) {
 			callback(new Error('User does not exist!'));
 			return;
 		}
