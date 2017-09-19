@@ -17,6 +17,7 @@ const app = express();
 
 const bodyParser = require('body-parser');
 const signup = require(__dirname + '/libs/signup.js');
+const membersActions = require(__dirname + '/libs/members-actions.js');
 const MongoClient = require('mongodb').MongoClient;
 
 /*
@@ -34,6 +35,11 @@ app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/html/index.html');
 });
 
+app.get('/leave', function(req, res) {
+	res.sendFile(__dirname + '/html/leave.html');
+});
+
+
 /*
  * Connect to Database
  */
@@ -48,6 +54,16 @@ MongoClient.connect(config.mongodbURI, function(err, db) {
 		req.body.gradYear = parseInt(req.body.gradYear);
 
 		signup.signup(db, req.body, function(err) {
+			let errorMessage = null;
+			if(err) {
+				errorMessage = err.message;
+			}
+			res.json({ error: errorMessage });
+		});
+	});
+
+	app.post('/leave', function(req, res) {
+		membersActions.leave(db, req.body, function(err) {
 			let errorMessage = null;
 			if(err) {
 				errorMessage = err.message;

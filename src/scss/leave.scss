@@ -1,0 +1,62 @@
+$school-red: #d12229;
+$school-dark-red: #581021;
+$school-green: #04463d;
+$school-grey: #bcbbb6;
+
+$theme-white: #fff;
+$theme-space-black: #212121;
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+
+$theme-colors: (
+	primary: $school-red,
+	secondary: lighten($school-red, 20%),
+	success: $green,
+	info: $cyan,
+	warning: $yellow,
+	danger: $school-dark-red,
+	light: $gray-100,
+	dark: $gray-800
+);
+
+$enable-rounded: false;
+$enable-shadows: true;
+
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+.btn {
+	position: relative;
+	z-index: 100;
+	margin: 0 1rem !important;
+	padding: 0.4rem 0.6rem;
+	&:before {
+		z-index: -1;
+		content: '';
+		display: block;
+		position: absolute;
+		top: -10%;
+		left: 40%;
+		background: inherit;
+		transform: skew(-20deg);
+		height: 120%;
+		width: 120%;
+		margin-left: -50%;;
+	}
+}
+
+.container {
+	padding-top: 20%;
+	h1 {
+		text-align: center;
+	}
+	#leave-form {
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		.form-group {
+			width: 50%;
+		}
+	}
+}

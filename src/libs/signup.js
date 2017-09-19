@@ -71,7 +71,7 @@ function signup(db, data, callback) {
 	};
 
 	// Register user
-	async.series([
+	async.parallel([
 		// Insert user in database
 		function(callback) {
 			var programmerData = db.collection('members');
@@ -140,8 +140,6 @@ function signup(db, data, callback) {
 			return;
 		}
 
-		callback(null);
-
 		// Send a message to Slack chat to celebrate!
 		request({
 			url: config.slack.webhookURL,
@@ -150,7 +148,7 @@ function signup(db, data, callback) {
 				text: '*' + data.firstName + ' ' + data.lastName + ' (' + data.gradYear + ')* just joined MIT Launch Club! An invitation has been sent to *' + data.email + '@micds.org*.'
 			}
 		}, function(err, response, body) {
-			console.log(response);
+			callback(null);
 		});
 
 	});
